@@ -10,14 +10,17 @@ import Cart from './Components/Cart';
 import "./App.css"
 import About from './Components/About';
 import Contact from './Components/Contact';
+import BreadCrumbComponent from './Components/BreadCrumbComponent';
 const App = () => {
   return (
 <>
 
 <Router>
       <Header/>
+      <BreadCrumbComponent/>
       <Routes>
-        <Route path="/" exact element={<Home/>}></Route>
+        <Route path="/home" exact element={<Home/>}></Route>
+
         <Route path="/login"  element={<Login/>}></Route>
         <Route path="/cart"  element={<Cart/>}></Route>
         <Route path="/about"  element={<About/>}></Route>

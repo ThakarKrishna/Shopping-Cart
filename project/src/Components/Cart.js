@@ -23,8 +23,8 @@ const Cart = () => {
     <>
       {/* console.log("dfg") */}
       {cartList.length === 0 ? 
-      <div  >
-          <div  style={{alignItems:"center"}}>
+      <div    style={{textAlign:"center",marginTop:"5rem"}}>
+          <div >
 
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="currentColor" class="bi bi-cart-x" viewBox="0 0 16 16">
   <path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z"/>
@@ -32,7 +32,7 @@ const Cart = () => {
 </svg>
           </div>
 
-<h2>Your cart is empty</h2>
+<h2 style={{margin:"0.5rem"}}>Your cart is empty</h2>
       </div>
        : 
       cartList.map((product) => {

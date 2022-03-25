@@ -18,9 +18,7 @@ const Login = () => {
             console.log("home")
             Navigate("/login");
         }
-        //  else {
-        //     Navigate("/home");
-        // }
+ 
     }, [])
 
     const [empno, setEmpno] = useState("");
@@ -110,30 +108,33 @@ const Login = () => {
            
 	<div class="container">
 	
-		<div class={styles.logincontent}>
-			<form>
+		<div class={styles.logincontent} style={{
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly"
+}}>
+			<form className={styles.form}>
 				<img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg"/>
-				<h2 class="title">Welcome</h2>
-           		<div class="input-div one">
-           		   <div class="i">
-           		   		<i class="fas fa-user"></i>
+				<h2 class={styles.title}>Welcome</h2>
+           		<div class={styles.input_div_one}>
+           		   <div class={styles.i}>
+           		   		<i class="fas fa-user icon"></i>
            		   </div>
-           		   <div class="div">
-           		   		<h5>Username</h5>
-           		   		<input type="text" value={empno} onChange={(e) => { setEmpno(e.target.value) }} name="empno" class="input"/>
+           		   <div class={styles.div}>
+           		   		
+           		   		<input type="text" placeholder='username' value={empno} onChange={(e) => { setEmpno(e.target.value) }} name="empno" class={styles.input}/>
            		   </div>
            		</div>
-           		<div class="input-div pass">
-           		   <div class="i"> 
-           		    	<i class="fas fa-lock"></i>
+           		<div class={styles.input_div_pass}>
+           		   <div class={styles.i}> 
+           		    	<i class="fas fa-lock icon"></i>
            		   </div>
-           		   <div class="div">
-           		    	<h5>Password</h5>
-           		    	<input type="password" name="password" value={password} onChange={(e) => { setPassword(e.target.value) }} name="password"  class="input"/>
+           		   <div class={styles.div}>
+           		    	<input type="password" placeholder='password' name="password" value={password} onChange={(e) => { setPassword(e.target.value) }} name="password"  class={styles.input}/>
             	   </div>
             	</div>
             	
-            	<input type="submit" onClick={getData}  class="btn" value="Login"/>
+            	<input type="submit" onClick={getData}  class={styles.btn} value="Login"/>
             </form>
         </div>
     </div>

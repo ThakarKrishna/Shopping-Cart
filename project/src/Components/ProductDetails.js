@@ -31,12 +31,11 @@ const addToCart =(data)=>{
     if (!token) {
         console.log("home")
         Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
+          
+         
             text: 'Please Login First',
-            footer: '<a href="">Why do I have this issue?</a>'
         })
-        Navigate("/cart");
+        Navigate("/login");
     }
      else {
         dispatch(addCart(data))
@@ -80,9 +79,9 @@ Navigate("/cart")
 
     <>
     <div className="container mt-5 mb-2"  >
-      {Object.keys(product).length === 0 ? (<h2 style={{margin:"11rem auto auto 24rem"}}>Loading...</h2>) :
+      {Object.keys(product).length === 0 ? (<h2 style={{margin:"11rem auto auto 19rem"}}>Loading...</h2>) :
         (
-<Container style={{marginTop:"8rem"}}>
+<Container style={{marginTop:"4rem"}}>
           <Row>
             <Col><img src={image} alt={title} height="400px" width="400px"/></Col>
             <Col>
