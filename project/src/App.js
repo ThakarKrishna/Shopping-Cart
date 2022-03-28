@@ -19,7 +19,9 @@ const App = () => {
       <Header/>
       <BreadCrumbComponent/>
       <Routes>
-        <Route path="/home" exact element={<Home/>}></Route>
+      <Route path="/" exact element={<Home/>}></Route>
+
+        <Route path="/home"  element={<Home/>}></Route>
 
         <Route path="/login"  element={<Login/>}></Route>
         <Route path="/cart"  element={<Cart/>}></Route>

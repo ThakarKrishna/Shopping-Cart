@@ -17,7 +17,7 @@ function BreadCrumb() {
             display: "flex",
             // marginLeft: "1rem",
             marginTop: "5rem",
-            fontSize: "1.2rem",
+            fontSize: "1.1rem",
           }}
         >
            {path.map((route, index) => {
