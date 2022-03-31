@@ -29,11 +29,9 @@ export const selectedProductsReducer = (state = {}, { type, payload }) => {
 
 export const handleCart =(state=cart,action)=>{
      const data =action.payload;
-     console.log({data})
     switch(action.type){
         case "ADD_ITEM":
             const exist = state.find((x)=>x.id === data.id)
-            console.log(exist)
             if(exist){
                 return state.map((x)=>
                     x.id === data.id? {...x,qty:x.qty+1}:x
@@ -56,6 +54,9 @@ export const handleCart =(state=cart,action)=>{
                 )
                }
             ;
+
+            case "REMOVE_FROM_CART":
+             return [];
 
                default:
                    return state;

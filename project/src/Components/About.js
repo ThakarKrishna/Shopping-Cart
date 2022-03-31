@@ -3,7 +3,7 @@ import {Col,Row} from "react-bootstrap"
 
 const About = () => {
   const container={
-    marginTop:"6rem",
+    marginTop:"4rem",
    
   }
 

@@ -12,14 +12,7 @@ import { useNavigate } from 'react-router';
 const Login = () => {
 
     const Navigate = useNavigate();
-    useEffect(() => {
-        const token = localStorage.getItem("Token");
-        if (!token) {
-            console.log("home")
-            Navigate("/login");
-        }
- 
-    }, [])
+  
 
     const [empno, setEmpno] = useState("");
     const [password, setPassword] = useState("");
@@ -46,7 +39,7 @@ const Login = () => {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    Navigate("/")
+                    Navigate("/home")
                 }
 
 
@@ -106,37 +99,37 @@ const Login = () => {
             
 
            
-	<div class="container">
+	<div className="container">
 	
-		<div class={styles.logincontent} style={{
+		<div className={styles.logincontent} style={{
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly"
 }}>
 			<form className={styles.form}>
 				<img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg"/>
-				<h2 class={styles.title}>Welcome</h2>
-           		<div class={styles.input_div_one}>
+				<h2 className={styles.title}>Welcome</h2>
+           		<div className={styles.input_div_one}>
            		 
-           		   <div class={styles.div}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+           		   <div className={styles.div}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-person-fill" viewBox="0 0 16 16">
   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 </svg>
-           		   		<input type="text" placeholder='username' value={empno} onChange={(e) => { setEmpno(e.target.value) }} name="empno" class={styles.input}/>
+           		   		<input type="text" placeholder='username' value={empno} onChange={(e) => { setEmpno(e.target.value) }} name="empno" className={styles.input}/>
            		   </div>
            		</div>
-           		<div class={styles.input_div_pass}>
+           		<div className={styles.input_div_pass}>
            		
-           		   <div class={styles.div}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-lock-fill" viewBox="0 0 16 16">
+           		   <div className={styles.div}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-file-lock-fill" viewBox="0 0 16 16">
   <path d="M7 6a1 1 0 0 1 2 0v1H7V6zM6 8.3c0-.042.02-.107.105-.175A.637.637 0 0 1 6.5 8h3a.64.64 0 0 1 .395.125c.085.068.105.133.105.175v2.4c0 .042-.02.107-.105.175A.637.637 0 0 1 9.5 11h-3a.637.637 0 0 1-.395-.125C6.02 10.807 6 10.742 6 10.7V8.3z"/>
   <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-2 6v1.076c.54.166 1 .597 1 1.224v2.4c0 .816-.781 1.3-1.5 1.3h-3c-.719 0-1.5-.484-1.5-1.3V8.3c0-.627.46-1.058 1-1.224V6a2 2 0 1 1 4 0z"/>
 </svg>
-           		    	<input type="password" placeholder='password' name="password" value={password} onChange={(e) => { setPassword(e.target.value) }} name="password"  class={styles.input}/>
+           		    	<input type="password" placeholder='password' name="password" value={password} onChange={(e) => { setPassword(e.target.value) }} name="password"  className={styles.input}/>
             	   </div>
             	</div>
             	
-            	<input type="submit" onClick={getData}  class={styles.btn} value="Login"/>
+            	<input type="submit" onClick={getData}  className={styles.btn} value="Login"/>
             </form>
         </div>
     </div>

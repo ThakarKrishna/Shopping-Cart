@@ -20,38 +20,39 @@ const ProductList = () => {
 
   useEffect(() => {
     getProductsByFilter();
-  }, [])
+  }, [search])
   
   const getProductsByFilter = (category = 'all') => {
     axios.get("https://fakestoreapi.com/products").then((res) => {
-      dispatch(setProducts(res.data, category))
+      dispatch(setProducts(res.data,category, search ));
     }).catch((err) => {
       console.log(err)
     })
   }
- 
+
   
+ 
 
   return (
     <>
 
       <div className="container mt-5">
-        <div style={{ display: "flex", justifyContent: "center" ,marginTop:"3rem"}}>
+        <div style={{ display: "flex", justifyContent: "center" ,marginTop:"6rem"}}>
           <h2>Latest Products</h2>
          
         </div>
 
 
         <hr/>
-        <div class="container">
+        <div className="container">
     
-    <div class="row">
-        <div class="col-md-4" style={{margin:"1rem auto"}}>
-            <div class="input-group">
-                <input  class="form-control border-dark py-2 "  placeholder="Search Here" type="search" name="search" value={search} onChange={(e)=>setSearch(e.target.value.toLowerCase())}/>
-                <div class="input-group-append">
-                    <button  class="btn btn-outline-dark" type="button">
-                        <i class="fa fa-search"></i>
+    <div className="row">
+        <div className="col-md-4" style={{margin:"1rem auto"}}>
+            <div className="input-group">
+                <input  className="form-control border-dark py-2 "  placeholder="Search Here" type="search" name="search" value={search} onChange={(e)=>setSearch(e.target.value.toLowerCase())}/>
+                <div className="input-group-append">
+                    <button  className="btn btn-outline-dark" type="button">
+                        <i className="fa fa-search"></i>
                     </button>
                 </div>
             </div>
@@ -69,7 +70,7 @@ const ProductList = () => {
 
         <div className="row">
 
-          <ProductComponent search={search} />
+          <ProductComponent />
         </div>
 
 

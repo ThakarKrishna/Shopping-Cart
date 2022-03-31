@@ -10,9 +10,9 @@ function BreadCrumb() {
   const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
   return (
     <>
-      <div>
+      <div className="Bread_crumb">
         <div
-          class="ui breadcrumb"
+          className="ui breadcrumb"
           style={{
             display: "flex",
             // marginLeft: "1rem",
@@ -25,15 +25,15 @@ function BreadCrumb() {
             const isLast = index === path.length - 1;
 
             return isLast ? (
-              <a class="section" style={{ color: "black" }}>
+              <a className="section" style={{ color: "black" }}>
                 {capitalize(route)}
               </a>
             ) : (
-              <a class="section">
+              <a className="section">
                 <Link to={`${routeTo}`}>{capitalize(route)}</Link>
                 <i
                   aria-hidden="true"
-                  class="angle right icon"
+                  className="angle right icon"
                   style={{ color: "black" }}
                 ></i>
               </a>
@@ -46,3 +46,4 @@ function BreadCrumb() {
 }
 
 export default BreadCrumb;
+
