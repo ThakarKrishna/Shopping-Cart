@@ -9,17 +9,23 @@ import { Button } from 'react-bootstrap';
 const ProductList = () => {
 
   const[search,setSearch]=useState("");
-  console.log(search)
+  // console.log(search)
 
 
   const products = useSelector((state) => {
-    console.log(state)
+    // console.log(state)
   });
   const dispatch = useDispatch();
+useEffect(() => {
+  window.scrollTo(0,0)
+ 
+}, [])
 
 
   useEffect(() => {
     getProductsByFilter();
+
+
   }, [search])
   
   const getProductsByFilter = (category = 'all') => {
@@ -70,7 +76,7 @@ const ProductList = () => {
 
         <div className="row">
 
-          <ProductComponent />
+          <ProductComponent  search={search}/>
         </div>
 
 

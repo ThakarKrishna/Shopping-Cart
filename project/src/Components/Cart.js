@@ -1,6 +1,7 @@
 import { Card, Button, Col, Row, Container } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { addCart, delCart } from '../redux/actions/ProductActions';
+import { useEffect } from 'react';
 
 
 const Cart = () => {
@@ -13,6 +14,10 @@ const Cart = () => {
   const handleclick = (data) => {
     dispatch(addCart(data))
   }
+useEffect(() => {
+  window.scrollTo(0,0)
+ 
+}, [])
 
   
 

@@ -35,7 +35,7 @@ function BreadCrumb() {
                   aria-hidden="true"
                   className="angle right icon"
                   style={{ color: "black" }}
-                ></i>
+                ></i>/
               </a>
             );
           })}

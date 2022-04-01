@@ -4,22 +4,25 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addCart, removeFromCart } from '../redux/actions/ProductActions';
-import { selectedProduct, removeSelectedProduct } from "../redux/actions/ProductActions";
+
+import { selectedProduct, removeSelectedProduct,addCart ,removeFromCart} from "../redux/actions/ProductActions";
 import Swal from 'sweetalert2';
+
 
 
 
 const ProductDetails = () => {
 
+  // console.log(removeSelectedProduct())
+  // console.log(removeFromCart())
 
-  const [show, setShow] = useState(true);
-const cartList = useSelector((state)=> state.handleCart)
-console.log(cartList)
 
-cartList.map((e)=>{
-  return console.log(e.id)
-})
+  const [show, setShow] = useState(false);
+  const [temp, setTemp] = useState({})
+
+  let cartList = useSelector((state) => state.handleCart)
+// console.log(cartList)
+
 
 
 
@@ -33,9 +36,6 @@ cartList.map((e)=>{
   const addToCart = (data) => {
 
 
-    console.log(data.id)
-
-   
     const token = localStorage.getItem("Token");
     if (!token) {
       Swal.fire({
@@ -46,16 +46,21 @@ cartList.map((e)=>{
       Navigate("/login");
     }
     else {
-      dispatch(addCart(data))
-    
+      dispatch(addCart(data));
 
-      setShow(false)
+
+      setShow(true)
     }
   }
 
-  const RemoveFromCart = () => {
-    // dispatch(removeFromCart())
-  }
+const removeToCart=(el)=>{
+  dispatch(removeFromCart(el))
+  console.log(dispatch(removeFromCart(el)))
+
+  console.log(el)
+  setShow(false)
+  // cartList.map((e)=>console.log(e))
+}
 
   const goToCart = () => {
     Navigate("/cart")
@@ -64,7 +69,7 @@ cartList.map((e)=>{
   const fetchProductDetail = (id) => {
     axios.get(`https://fakestoreapi.com/products/${id}`)
       .then((res) => {
-        console.log(res.data);
+        setTemp(res.data)
         dispatch(selectedProduct(res.data))
       }).catch((err) => {
         console.log(err);
@@ -74,10 +79,30 @@ cartList.map((e)=>{
 
   useEffect(() => {
     if (productId && productId !== "") fetchProductDetail(productId);
+
+
+    cartList.map((el)=>{
+      console.log(el)
+      // console.log(productId)
+
+      if(el.id == productId){
+        setShow(true)
+        
+      }else{
+        setShow(false)
+      }
+
+    })
     return () => {
       dispatch(removeSelectedProduct());
     };
+
+
+    
   }, [productId]);
+
+
+  
 
 
 
@@ -109,17 +134,18 @@ cartList.map((e)=>{
                   <br />
 
                   <div style={{ marginBottom: "0.6rem" }}>
-                    {show ? <Button onClick={() => {
+                    {!show ? <Button onClick={() => {
                       addToCart(product)
                     }} variant="outline-dark">Add To Cart</Button>
-                      : <Button variant="success">Added To Cart</Button>}{''}
+                      : <><Button variant="success">Added To Cart</Button><Button style={{marginLeft:"0.8rem"}} onClick={() => {
+                        removeToCart(product)
+                      }} variant="outline-dark">Remove from Cart</Button>{' '}
+                      </>}{''}
                   </div>
 
 
 
-                  <Button onClick={
-                    RemoveFromCart()
-                  } variant="outline-dark">Remove from Cart</Button>{' '}
+                  
                   <Button onClick={goToCart
                   } variant="dark">Go To Cart</Button>{' '}
                 </Col>
