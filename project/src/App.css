@@ -52,3 +52,16 @@
     z-index: 980;
 
 } */
+
+.suggestion{
+  padding: 0.5rem;
+  /* border-bottom: 0.1px solid gray; */
+  border-left: 0.1px solid gray;
+  border-right: 0.1px solid gray;
+
+
+}
+
+.suggestion:hover{
+  background-color: gray;
+}

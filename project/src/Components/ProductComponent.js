@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const ProductComponent = () => {
+const ProductComponent = (props) => {
 
   // console.log(props.search)
 
