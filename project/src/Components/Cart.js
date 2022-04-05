@@ -1,7 +1,8 @@
 import { Card, Button, Col, Row, Container } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { addCart, delCart } from '../redux/actions/ProductActions';
+import { addCart, delCart ,removeFromCart} from '../redux/actions/ProductActions';
 import { useEffect } from 'react';
+import Swal from 'sweetalert2';
 
 
 const Cart = () => {
@@ -20,7 +21,27 @@ useEffect(() => {
 }, [])
 
   
+const removeProductFromCart = (el)=>{
+  Swal.fire({
+    title: 'Are you sure to remove this?',
+    // text: "You won't be able to revert this!",
+    // icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, Remove it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+  dispatch(removeFromCart(el))
 
+      Swal.fire(
+        'Deleted!',
+        'Your Product has been Removed from cart.',
+        'success'
+      )
+    }
+  })
+}
   const removeToCart = (data) => {
     // console.log(data);
     dispatch(delCart(data))
@@ -67,9 +88,14 @@ useEffect(() => {
                   <Button onClick={() => handleclick(product, id)} variant="dark me-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
                   </svg></Button>
-                  <br/>
                  
-
+                  <Button onClick={()=>removeProductFromCart(product)} variant="dark me-2" title='Remove from Cart'>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+</svg>
+                  </Button>
+                  <br/>
                 </Col>
 
               </Row>

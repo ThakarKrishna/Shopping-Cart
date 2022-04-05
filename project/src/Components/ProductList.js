@@ -48,6 +48,7 @@ const ProductList = () => {
 
   const onSuggestionHandler =(search)=>{
     setSearch(search)
+  console.log(search)
     setSuggestion([])
 
   }
@@ -56,9 +57,7 @@ const ProductList = () => {
   useEffect(() => {
     getProductsByFilter();
 
-    
-
-
+  
   }, [search])
 
   const getProductsByFilter = (category = 'all') => {
@@ -88,7 +87,7 @@ const ProductList = () => {
           <div className="row">
             <div className="col-md-5" style={{ margin: "1rem auto" }}>
               <div className="input-group">
-                <input className="form-control border-dark py-2 " placeholder="Search Here"  autoComplete='off' ype="search" name="search" value={search} onChange={(e) => onChangeHandler(e.target.value.toLowerCase())} />
+                <input className="form-control border-dark py-2 " placeholder="Search Here"  autoComplete='off' type="search" name="search" value={search} onChange={(e) => onChangeHandler(e.target.value.toLowerCase())} />
 
                 <div className="input-group-append">
                     <button  className="btn btn-outline-dark" type="button">
@@ -107,7 +106,8 @@ const ProductList = () => {
 
 suggestion.map((suggestion,i)=>{
           // console.log(suggestion.title.slice(0,15));
- return <div  key={i}> <div  className='suggestion' onClick={()=>onSuggestionHandler(suggestion.title)}>
+ return <div  key={i}> <div  className='suggestion' value={suggestion.title} onClick={()=>onSuggestionHandler(suggestion.title.toLowerCase())
+ } >
    <img  style={{height:"2.5rem",width:"2.5rem",marginRight:"1rem"}}  src={suggestion.image}/>
    {suggestion.title.slice(0,30)}...</div> </div>
 }):<h2>jhj</h2>

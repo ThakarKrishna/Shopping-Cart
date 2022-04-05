@@ -6,7 +6,9 @@ import { Link, useLocation } from "react-router-dom";
 function BreadCrumb() {
   const location = useLocation();
   const { pathname } = location;
+  console.log(pathname)
   const path = pathname.split("/").filter((item) => item);
+  console.log(path)
   const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
   return (
     <>
