@@ -55,7 +55,7 @@ const Contact = () => {
     width: "25rem",
     height: "20rem",
     backgroundRepeat: "no-repeat",
-    position: "fixed",
+    // position: "fixed", q
     left: "1rem"
   }
 
@@ -67,7 +67,7 @@ const Contact = () => {
       <div style={container} className="container">
         <Row>
           <Col>
-            <img style={img} src='./Images/contact.jpg' />
+            <img className='ContactImage' style={img} src='./Images/contact.jpg' />
           </Col>
           <Col>
             <p style={p}>Contact Us</p>
@@ -80,7 +80,7 @@ const Contact = () => {
         <Row style={{ margin: "2rem auto 1rem 3rem" }}>
           <Col></Col>
           <Col>
-            <Row>
+            <Row  className='logoOfContact'>
               <Col>
                 <a target="_blank" href='https://github.com/ThakarKrishna'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
@@ -127,8 +127,8 @@ const Contact = () => {
 
         <Row>
           <Col> </Col>
-          <Col>
-            <div >
+          <Col className='formOfContact'>
+            <div style={{margin:"1rem"}} >
               <FloatingLabel style={input} controlId="floatingPassword" label="Name">
                 <Form.Control type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
               </FloatingLabel>

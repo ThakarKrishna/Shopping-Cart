@@ -26,10 +26,10 @@ const About = () => {
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, quibusdam.</p>
         </Col>
         <Col>
-        <NavLink  to="google.com/maps/@1.2986019,103.7719623,19z">
+        
           <img style={img} src='./Images/image.jpg' />
 
-        </NavLink>
+
 
         </Col>
       </Row>

@@ -100,4 +100,20 @@ margin:0 !important
 .SecondLoading{
   margin: 6rem 7rem !important;
 }
+  
+  
+.ContactImage{
+
+  height: 15rem !important;
+  width: 20rem !important;
+}
+.logoOfContact{
+  display: flex;
+  margin-left: -12rem !important;
+  margin-right: 0rem !important;
+}
+
+.formOfContact{
+  display: contents;
+}
 }
