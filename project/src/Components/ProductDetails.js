@@ -22,16 +22,16 @@ const ProductDetails = () => {
 
   const addToCart = (data) => {
     const token = localStorage.getItem("Token");
-    if (!token) {
-      Swal.fire({
-        text: 'Please Login First',
-      })
-      Navigate("/login");
-    }
-    else {
+    // if (!token) {
+    //   Swal.fire({
+    //     text: 'Please Login First',
+    //   })
+    //   Navigate("/login");
+    // }
+    // else {
       dispatch(addCart(data));
       setShow(true)
-    }
+  //   }
   }
 
   const removeToCart = (el) => {
@@ -75,11 +75,11 @@ const ProductDetails = () => {
   return (
     <>
       <div className="container mt-5 mb-2"  >
-        {Object.keys(product).length === 0 ? (<h2 style={{ margin: "11rem auto auto 24rem" }}>Loading...</h2>) :
+        {Object.keys(product).length === 0 ? (<h2 className='SecondLoading' style={{ margin: "11rem auto auto 24rem" }}>Loading...</h2>) :
           (
             <Container style={{ marginTop: "4rem" }}>
               <Row>
-                <Col><img src={image} alt={title} height="400px" width="400px" /></Col>
+                <Col><img  className='productImage' src={image} alt={title} height="400px" width="400px" /></Col>
                 <Col>
                   <br />
                   <h4 style={{ textTransform: "uppercase", color: 'black' }}>{category}</h4>
@@ -105,7 +105,8 @@ const ProductDetails = () => {
                         addToCart(product)
                       }} variant="outline-dark">Add To Cart
                       </Button>
-                      : <><Button variant="success">Added To Cart</Button><Button style={{ marginLeft: "0.8rem" }} onClick={() => {
+                      : <><Button className='AddedToCart' variant="success">Added To Cart</Button>
+                      <Button className='RemoveFromCart' style={{ marginLeft: "0.8rem" }} onClick={() => {
                         removeToCart(product)
                       }} variant="outline-dark">  Remove from Cart   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
                           <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />

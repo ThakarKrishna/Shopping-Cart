@@ -23,7 +23,7 @@ const ProductComponent = () => {
 
   return (
     <>
-      {products.length === 0 ? <h2 style={{ margin: "11rem auto 5rem 1rem", paddingLeft: "25rem" }}>Loading...</h2> : products.map((product) => {
+      {products.length === 0 ? <h2 className='Loading' style={{ margin: "11rem auto 5rem 1rem", paddingLeft: "25rem" }}>Loading...</h2> : products.map((product) => {
         const { id, title, image, price, category } = product;
         return (
           <div className="col " key={id}>

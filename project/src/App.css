@@ -11,6 +11,8 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+
+
 }
 
 .App-header {
@@ -43,15 +45,6 @@
   background-size: cover;
 }
 
-/* .Bread_crumb{
-  
-    position: fixed;
-    top: 0px;
-    right: 0;
-    left: 0;
-    z-index: 980;
-
-} */
 
 .suggestion{
   padding: 0.5rem;
@@ -64,4 +57,47 @@
 
 .suggestion:hover{
   background-color: rgb(190, 184, 184);
+}
+
+
+@media only screen and (max-width: 600px) {
+ .cardTitle{
+font-size: 2rem !important;
+margin:0 !important
+ }
+ .cardText{
+  font-size: 1rem !important;
+  margin:0 !important
+ }
+ .cardBtn{
+   margin:2rem auto auto 0 !important;
+   height: auto !important; 
+   width: auto !important;
+   font-size:1rem !important;
+ }
+ .categoryProducts{
+ display: block !important;
+}
+.categoryBtn{
+ margin: 0.5rem 3.1rem !important;
+
+}
+.productImage{
+  height: 15rem !important;
+  width: 15rem !important;
+}
+.AddedToCart{
+
+}
+.RemoveFromCart{
+  margin-left: 0rem !important;
+  margin-top: 0.5rem !important;
+}
+.Loading{
+  margin:3rem -18rem !important;
+}
+
+.SecondLoading{
+  margin: 6rem 7rem !important;
+}
 }

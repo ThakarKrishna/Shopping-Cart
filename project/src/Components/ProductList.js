@@ -117,12 +117,12 @@ ref.current.focus()
         </div>
 
 
-        <div className="btn d-flex justify-content-center">
-          <Button onClick={() => getProductsByFilter("all")} variant="outline-dark me-2">All</Button>
-          <Button onClick={() => getProductsByFilter("men's clothing")} variant="outline-dark me-2">men's clothing</Button>
-          <Button onClick={() => getProductsByFilter("women's clothing")} variant="outline-dark me-2">women's clothing</Button>
-          <Button onClick={() => getProductsByFilter("jewelery")} variant="outline-dark me-2">jewelery</Button>
-          <Button onClick={() => getProductsByFilter("electronics")} variant="outline-dark me-2">electronics</Button>
+        <div  className="btn d-flex justify-content-center categoryProducts">
+          <Button className='categoryBtn' onClick={() => getProductsByFilter("all")} variant="outline-dark me-2">All</Button>
+          <Button className='categoryBtn' onClick={() => getProductsByFilter("jewelery")} variant="outline-dark me-2">jewelery</Button>
+          <Button className='categoryBtn' onClick={() => getProductsByFilter("electronics")} variant="outline-dark me-2">electronics</Button>
+          <Button className='categoryBtn' onClick={() => getProductsByFilter("men's clothing")} variant="outline-dark me-2">men's clothing</Button>
+          <Button className='categoryBtn' onClick={() => getProductsByFilter("women's clothing")} variant="outline-dark me-2">women's clothing</Button>
         </div>
 
         <div className="row">
