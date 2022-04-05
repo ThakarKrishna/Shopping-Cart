@@ -5,18 +5,18 @@ export const setProducts = (products, category, title) => {
 
     return {
         type: actionTypes.SET_PRODUCTS,
-        payload: 
-        category == 'all' ? 
-        
-        title === "" ? products : products.filter((item) => 
-            item.title.toLowerCase().indexOf(title) >= 0
-        )
-        : 
-        title === "" ? products.filter(item => item.category == category) :
-        products.filter((item) =>
-            item.category == category && 
-            item.title.toLowerCase().indexOf(title) >= 0
-        )
+        payload:
+            category == 'all' ?
+
+                title === "" ? products : products.filter((item) =>
+                    item.title.toLowerCase().indexOf(title) >= 0
+                )
+                :
+                title === "" ? products.filter(item => item.category == category) :
+                    products.filter((item) =>
+                        item.category == category &&
+                        item.title.toLowerCase().indexOf(title) >= 0
+                    )
     }
 };
 

@@ -27,50 +27,48 @@ export const selectedProductsReducer = (state = {}, { type, payload }) => {
 
 }
 
-export const handleCart =(state=cart,action)=>{
-// console.log("🚀 ~ file: ProductReducer.js ~ line 31 ~ handleCart ~ action", action)
-// console.log("🚀 ~ file: ProductReducer.js ~ line 31 ~ handleCart ~ cart", cart)
-     const data =action.payload;
-    switch(action.type){
+export const handleCart = (state = cart, action) => {
+    const data = action.payload;
+    switch (action.type) {
         case "ADD_ITEM":
-            const exist = state.find((x)=>x.id === data.id)
-            if(exist){
-                return state.map((x)=>
-                    x.id === data.id? {...x,qty:x.qty+1}:x
+            const exist = state.find((x) => x.id === data.id)
+            if (exist) {
+                return state.map((x) =>
+                    x.id === data.id ? { ...x, qty: x.qty + 1 } : x
                 )
-            }else{
+            } else {
                 const data = action.payload;
                 // console.log("🚀 ~ file: ProductReducer.js ~ line 43 ~ handleCart ~ data", data)
-                return[
-                    ...state,{...data,qty:1 }
+                return [
+                    ...state, { ...data, qty: 1 }
                 ]
             }
-        
 
-           case "DEL_ITEM":
-               const exist1 = state.find((x)=>x.id === data.id);
-               if(exist1.qty === 1){
-                   return state.filter((x)=>x.id !== data.id)
-               }else{
-                return state.map((x)=>
-                    x.id === data.id? {...x,qty:x.qty-1}:x
+
+        case "DEL_ITEM":
+            const exist1 = state.find((x) => x.id === data.id);
+            if (exist1.qty === 1) {
+                return state.filter((x) => x.id !== data.id)
+            } else {
+                return state.map((x) =>
+                    x.id === data.id ? { ...x, qty: x.qty - 1 } : x
                 )
-               }
+            }
             ;
 
-            case "REMOVE_FROM_CART":
-                const exist2 = state.find((x)=>x.id === data.id);
-                if(exist2?.qty === 1){
-                    return state.filter((x)=>x.id !== data.id)
-                }
-                else{
-                 return state.map((x)=>
-                     x.id === data.id? {qty:0}:x
-                 )
-                }
-               default:
-                   return state;
-             
+        case "REMOVE_FROM_CART":
+            const exist2 = state.find((x) => x.id === data.id);
+            if (exist2?.qty === 1) {
+                return state.filter((x) => x.id !== data.id)
+            }
+            else {
+                return state.map((x) =>
+                    x.id === data.id ? { qty: 0 } : x
+                )
+            }
+        default:
+            return state;
+
 
     }
 }

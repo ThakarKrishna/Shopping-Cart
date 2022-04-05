@@ -1,36 +1,40 @@
 import React from 'react'
-import {Col,Row} from "react-bootstrap"
+import { Col, Row } from "react-bootstrap"
+import { NavLink } from 'react-router-dom'
 
 const About = () => {
-  const container={
-    marginTop:"4rem",
-   
+  const container = {
+    marginTop: "4rem",
+
   }
 
-  const img={
-    width:"25rem",
-    backgroundRepeat:"no-repeat",
+  const img = {
+    width: "25rem",
+    backgroundRepeat: "no-repeat",
   }
 
-  const h2= {
-textTransform:"uppercase",
-marginBottom:"1rem"
+  const h2 = {
+    textTransform: "uppercase",
+    marginBottom: "1rem"
   }
   return (
-    <div  style={container} className="container">
+    <div style={container} className="container">
       <Row>
         <Col>
-        <h2 style={h2}>About Us</h2>
-  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero inventore, ab nostrum impedit voluptatibus odit quas facere, blanditiis hic accusamus eaque mollitia quia sint quaerat necessitatibus ad deleniti rerum. Delectus?</p>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, quibusdam.</p>
+          <h2 style={h2}>About Us</h2>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero inventore, ab nostrum impedit voluptatibus odit quas facere, blanditiis hic accusamus eaque mollitia quia sint quaerat necessitatibus ad deleniti rerum. Delectus?</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, quibusdam.</p>
         </Col>
         <Col>
-  <img style={img} src='./Images/image.jpg'/>
-        
+        <NavLink  to="google.com/maps/@1.2986019,103.7719623,19z">
+          <img style={img} src='./Images/image.jpg' />
+
+        </NavLink>
+
         </Col>
       </Row>
- 
-</div>
+
+    </div>
   )
 }
 
