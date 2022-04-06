@@ -44,7 +44,9 @@ const Contact = () => {
   const p = {
     textTransform: "uppercase",
     marginBottom: "1rem",
-    fontSize: "3rem"
+    fontSize: "3rem",
+    marginLeft:"20rem",
+    marginBottom:"3rem"
   }
 
   const form = {
@@ -65,19 +67,19 @@ const Contact = () => {
   return (
     <>
       <div style={container} className="container">
+            <p className='ContactHeader' style={p}>Contact Us</p>
         <Row>
           <Col>
             <img className='ContactImage' style={img} src='./Images/contact.jpg' />
           </Col>
-          <Col>
-            <p style={p}>Contact Us</p>
+          <Col className='contactPara'>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero inventore, ab nostrum impedit voluptatibus odit quas facere, blanditiis hic accusamus eaque mollitia quia sint quaerat necessitatibus ad deleniti rerum. Delectus?</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, quibusdam.</p>
           </Col>
         </Row>
 
 
-        <Row style={{ margin: "2rem auto 1rem 3rem" }}>
+        <Row style={{ margin: "-4rem auto 1rem 3rem" }}>
           <Col></Col>
           <Col>
             <Row  className='logoOfContact'>

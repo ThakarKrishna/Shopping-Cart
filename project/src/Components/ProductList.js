@@ -1,12 +1,22 @@
-import React, { useState, useEffect,useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import ProductComponent from './ProductComponent.js'
 import { useSelector, useDispatch } from 'react-redux';
 import { setProducts } from "../redux/actions/ProductActions";
 import axios from "axios";
 import { Button } from 'react-bootstrap';
+import MultiRangeSlider from "multi-range-slider-react";
+
 
 
 const ProductList = () => {
+
+
+  const [minValue, set_minValue] = useState(0);
+  const [maxValue, set_maxValue] = useState(1000);
+  const handleInput = (e) => {
+    set_minValue(e.minValue);
+    set_maxValue(e.maxValue);
+  };
 
   const dispatch = useDispatch();
   const ref = useRef();
@@ -16,9 +26,6 @@ const ProductList = () => {
 
   let products = useSelector((state) => state.allproducts.products);
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
 
   const onChangeHandler = (search) => {
     console.log(search.length)
@@ -27,8 +34,6 @@ const ProductList = () => {
     } else {
       setIsInput(false)
     }
-
-
     let matches = [];
     if (search.length > 0) {
       matches = products.filter((product) => {
@@ -40,6 +45,8 @@ const ProductList = () => {
     setSearch(search)
   }
 
+
+
   const onSuggestionHandler = (search) => {
     setSearch(search)
     setIsInput(false)
@@ -47,26 +54,35 @@ const ProductList = () => {
   }
 
 
+
   useEffect(() => {
     getProductsByFilter();
-  }, [search])
+
+  }, [search, minValue, maxValue])
 
   const getProductsByFilter = (category = 'all') => {
     axios.get("https://fakestoreapi.com/products")
       .then((res) => {
-        dispatch(setProducts(res.data, category, search))
+        dispatch(setProducts(res.data, category, search, minValue, maxValue))
       })
       .catch((err) => {
         console.log(err)
       })
   }
 
-const handleClick =()=>{
-  setSearch("");
-  setIsInput(false);
-ref.current.focus()
-  console.log("kc")
-}
+  console.log(products)
+  const handleClick = () => {
+    setSearch("");
+    setIsInput(false);
+    ref.current.focus()
+  }
+
+
+  const input = {
+    width: "4rem",
+    margin: "1rem"
+  }
+
 
 
   return (
@@ -117,7 +133,7 @@ ref.current.focus()
         </div>
 
 
-        <div  className="btn d-flex justify-content-center categoryProducts">
+        <div className="btn d-flex justify-content-center categoryProducts">
           <Button className='categoryBtn' onClick={() => getProductsByFilter("all")} variant="outline-dark me-2">All</Button>
           <Button className='categoryBtn' onClick={() => getProductsByFilter("jewelery")} variant="outline-dark me-2">jewelery</Button>
           <Button className='categoryBtn' onClick={() => getProductsByFilter("electronics")} variant="outline-dark me-2">electronics</Button>
@@ -125,6 +141,35 @@ ref.current.focus()
           <Button className='categoryBtn' onClick={() => getProductsByFilter("women's clothing")} variant="outline-dark me-2">women's clothing</Button>
         </div>
 
+        <div style={{ width: "25rem", marginLeft: "33rem", marginTop: "2rem" }}>
+          {/* <Slider/> */}
+          <div>
+            <div>
+              <label>Min Price:</label>
+              <input style={input} type="text" value={minValue} onChange={(e) => set_minValue(e.target.value)} />
+              <label>Max Price :</label>
+              <input style={input} type="text" value={maxValue} onChange={(e) => set_maxValue(e.target.value)} />
+            </div>
+
+
+            <MultiRangeSlider
+              min={0}
+              max={1000}
+              step={5}
+              ruler={false}
+              label={true}
+              // onChange={(e)=>set_minValue(e.target.minValue)}
+              preventWheel={false}
+              minValue={minValue}
+              maxValue={maxValue}
+              onInput={(e) => {
+                handleInput(e);
+
+              }}
+
+            />
+          </div>
+        </div>
         <div className="row">
           <ProductComponent search={search} />
         </div>

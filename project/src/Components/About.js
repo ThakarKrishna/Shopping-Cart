@@ -27,7 +27,7 @@ const About = () => {
         </Col>
         <Col>
         
-          <img style={img} src='./Images/image.jpg' />
+          <img  className='AboutImage' style={img} src='./Images/image.jpg' />
 
 
 

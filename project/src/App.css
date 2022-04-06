@@ -59,6 +59,31 @@
   background-color: rgb(190, 184, 184);
 }
 
+form  {
+  margin: 60px 0 0 0 !important;
+}
+
+.bar-inner-left{
+  background: rgb(99, 159, 214);
+}
+.bar-inner-right{
+  background: rgb(99, 159, 214);
+}
+/* 
+.ui-slider .ui-btn-inner {
+  padding: 4px 0 0 0 !important;
+} */
+
+.ui-slider-popup {
+  position: absolute !important;
+  width: 64px;
+  height: 64px;
+  text-align: center;
+  font-size: 36px;
+  padding-top: 14px;
+  z-index: 100;
+  opacity: 0.8;
+}
 
 @media only screen and (max-width: 600px) {
  .cardTitle{
@@ -79,8 +104,7 @@ margin:0 !important
  display: block !important;
 }
 .categoryBtn{
- margin: 0.5rem 3.1rem !important;
-
+margin-top:1rem !important;
 }
 .productImage{
   height: 15rem !important;
@@ -105,15 +129,29 @@ margin:0 !important
 .ContactImage{
 
   height: 15rem !important;
-  width: 20rem !important;
+  width: 19rem !important;
 }
 .logoOfContact{
   display: flex;
   margin-left: -12rem !important;
   margin-right: 0rem !important;
+  margin-top: 5rem !important;
 }
 
 .formOfContact{
   display: contents;
+}
+
+.AboutImage{
+  height: 15rem !important;
+  width: 20rem !important;
+}
+.contactPara{
+  margin-top: 1rem !important;
+}
+
+.ContactHeader{
+  margin: 0 auto !important;
+  padding-bottom: 2rem !important;
 }
 }

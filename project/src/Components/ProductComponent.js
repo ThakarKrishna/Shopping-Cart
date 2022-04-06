@@ -8,17 +8,17 @@ const ProductComponent = () => {
 
   let products = useSelector((state) => state.allproducts.products);
 
-  // const sortedProducts = products.sort(function (a, b) {
-  //   var nameA = a.title;
-  //   var nameB = b.title;
-  //   if (nameA < nameB) {
-  //     return -1;
-  //   }
-  //   if (nameA > nameB) {
-  //     return 1;
-  //   }
-  //   return 0;
-  // });
+  const sortedProducts = products.sort(function (a, b) {
+    var nameA = a.title;
+    var nameB = b.title;
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
 
 
   return (
