@@ -10,6 +10,40 @@ import MultiRangeSlider from "multi-range-slider-react";
 
 const ProductList = () => {
 
+  const [state, setState] = useState([
+    {
+      id: 1,
+      name: "ALL",
+      value: "all",
+    },
+    {
+      id: 2,
+      name: "Men's clothing",
+      value: "men's clothing",
+    },
+    {
+      id: 3,
+      name: "Women's clothing",
+      value: "women's clothing",
+    },
+    {
+      id: 4,
+      name: "Jewelery",
+      value: "jewelery",
+    },
+    {
+      id: 5,
+      name: "Electronics",
+      value: "electronics",
+    }
+
+  ]);
+
+  const checkBox = {
+    fontSize: "1.5rem",
+  }
+
+
 
   const [minValue, set_minValue] = useState(0);
   const [maxValue, set_maxValue] = useState(1000);
@@ -55,12 +89,26 @@ const ProductList = () => {
   }
 
 
+  const [flag, setFlag] = useState(
+    new Array(state.length).fill(false)
+  )
+
 
   useEffect(() => {
     getProductsByFilter();
   }, [search, minValue, maxValue])
 
-  const getProductsByFilter = (category = 'all') => {
+
+  const getProductsByFilter = (category = "all", position) => {
+
+
+    const updatedFlag = flag.map((item, i) =>
+      i === position ? !item : item
+    )
+    console.log(updatedFlag)
+    setFlag(updatedFlag)
+    console.log(category)
+
     axios.get("https://fakestoreapi.com/products")
       .then((res) => {
         dispatch(setProducts(res.data, category, search, minValue, maxValue))
@@ -70,7 +118,6 @@ const ProductList = () => {
       })
   }
 
-  console.log(products)
   const handleClick = () => {
     setSearch("");
     setIsInput(false);
@@ -84,11 +131,10 @@ const ProductList = () => {
   }
 
 
-
   return (
     <>
 
-      <div className="container " style={{ overflow: "hidden" }}>
+      <div className="container " >
         <div style={{ display: "flex", justifyContent: "center", marginTop: "6rem" }}>
           <h2>Latest Products</h2>
         </div>
@@ -132,13 +178,32 @@ const ProductList = () => {
         </div>
 
 
-        <div className="btn d-flex justify-content-center categoryProducts">
-          <Button className='categoryBtn' onClick={() => getProductsByFilter("all")} variant="outline-dark me-2">All</Button>
-          <Button className='categoryBtn' onClick={() => getProductsByFilter("jewelery")} variant="outline-dark me-2">jewelery</Button>
-          <Button className='categoryBtn' onClick={() => getProductsByFilter("electronics")} variant="outline-dark me-2">electronics</Button>
-          <Button className='categoryBtn' onClick={() => getProductsByFilter("men's clothing")} variant="outline-dark me-2">men's clothing</Button>
-          <Button className='categoryBtn' onClick={() => getProductsByFilter("women's clothing")} variant="outline-dark me-2">women's clothing</Button>
+
+        <div style={{ display: "flex", justifyContent: "space-evenly", margin: "2rem" }}>
+          {state.map((el, i) =>
+          // console.log(el.name,el.checked,el.value,el.id)
+
+          (
+            <div class="form-check form-check-inline">
+              <input style={checkBox}
+                class="form-check-input"
+                type="checkbox"
+                id={el.id}
+                value={el.value}
+                checked={flag[i]}
+                onChange={(e) => getProductsByFilter(e.target.value, i)}
+              />
+              <label class="form-check-label" for="inlineCheckbox1">{el.name}</label>
+            </div>
+          )
+
+          )}
+
+
         </div>
+
+
+
 
         <div className='SliderOfPrice' style={{ width: "25rem", marginLeft: "33rem", marginTop: "1rem" }}>
           <div>
@@ -147,6 +212,7 @@ const ProductList = () => {
               <input style={input} type="text" value={minValue} onChange={(e) => set_minValue(e.target.value)} />
               <label>Max Price :</label>
               <input style={input} type="text" value={maxValue} onChange={(e) => set_maxValue(e.target.value)} />
+
             </div>
             <div className="Slider">
               <MultiRangeSlider
@@ -166,6 +232,17 @@ const ProductList = () => {
 
           </div>
         </div>
+
+
+        {/* <div className="btn d-flex justify-content-center categoryProducts">
+          <Button className='categoryBtn' onClick={() => getProductsByFilter("all")} variant="outline-dark me-2">All</Button>
+          <Button className='categoryBtn' onClick={() => getProductsByFilter("jewelery")} variant="outline-dark me-2">jewelery</Button>
+          <Button className='categoryBtn' onClick={() => getProductsByFilter("electronics")} variant="outline-dark me-2">electronics</Button>
+          <Button className='categoryBtn' onClick={() => getProductsByFilter("men's clothing")} variant="outline-dark me-2">men's clothing</Button>
+          <Button className='categoryBtn' onClick={() => getProductsByFilter("women's clothing")} variant="outline-dark me-2">women's clothing</Button>
+        </div> */}
+
+
         <div className="row">
           <ProductComponent search={search} />
         </div>
