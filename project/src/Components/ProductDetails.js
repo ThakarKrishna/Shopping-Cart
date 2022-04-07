@@ -22,16 +22,16 @@ const ProductDetails = () => {
 
   const addToCart = (data) => {
     const token = localStorage.getItem("Token");
-    if (!token) {
-      Swal.fire({
-        text: 'Please Login First',
-      })
-      Navigate("/login");
-    }
-    else {
+    // if (!token) {
+    //   Swal.fire({
+    //     text: 'Please Login First',
+    //   })
+    //   Navigate("/login");
+    // }
+    // else {
       dispatch(addCart(data));
       setShow(true)
-    }
+    // }
   }
 
   const removeToCart = (el) => {

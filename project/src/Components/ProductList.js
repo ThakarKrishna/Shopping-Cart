@@ -13,6 +13,7 @@ const ProductList = () => {
 
   const [minValue, set_minValue] = useState(0);
   const [maxValue, set_maxValue] = useState(1000);
+
   const handleInput = (e) => {
     set_minValue(e.minValue);
     set_maxValue(e.maxValue);
@@ -57,7 +58,6 @@ const ProductList = () => {
 
   useEffect(() => {
     getProductsByFilter();
-
   }, [search, minValue, maxValue])
 
   const getProductsByFilter = (category = 'all') => {
@@ -88,16 +88,16 @@ const ProductList = () => {
   return (
     <>
 
-      <div className="container mt-5">
+      <div className="container " style={{ overflow: "hidden" }}>
         <div style={{ display: "flex", justifyContent: "center", marginTop: "6rem" }}>
           <h2>Latest Products</h2>
         </div>
         <hr />
         <div className="container">
           <div className="row">
-            <div className="col-md-5" style={{ margin: "1rem auto" }}>
+            <div className="col-md-5" style={{ margin: "0.5rem auto" }}>
               <div className="input-group">
-                <input ref={ref} className="form-control border-dark py-2 " placeholder="Search Here" autoComplete='off' type="search" name="search" value={search} onChange={(e) => onChangeHandler(e.target.value.toLowerCase())} />
+                <input ref={ref} className="form-control border-dark py-1 " placeholder="Search Here" autoComplete='off' type="search" name="search" value={search} onChange={(e) => onChangeHandler(e.target.value.toLowerCase())} />
                 <div className="input-group-append">
                   <button className="btn btn-outline-dark" type="button">
                     <i className="fa fa-search"></i>
@@ -112,7 +112,6 @@ const ProductList = () => {
               <div className="col-md-5" style={{ margin: " -1rem auto 1rem auto" }}>
                 {(suggestion.length > 0) ?
                   suggestion.map((suggestion, i) => {
-                    // console.log("kk")
                     return <div key={i}>
                       <div className='suggestion' onClick={() => onSuggestionHandler(suggestion.title.toLowerCase())} >
                         <img style={{ height: "2.5rem", width: "2.5rem", marginRight: "1rem" }} src={suggestion.image} />
@@ -141,40 +140,35 @@ const ProductList = () => {
           <Button className='categoryBtn' onClick={() => getProductsByFilter("women's clothing")} variant="outline-dark me-2">women's clothing</Button>
         </div>
 
-        <div style={{ width: "25rem", marginLeft: "33rem", marginTop: "2rem" }}>
-          {/* <Slider/> */}
+        <div className='SliderOfPrice' style={{ width: "25rem", marginLeft: "33rem", marginTop: "1rem" }}>
           <div>
-            <div>
+            <div className='MaxMinDiv'>
               <label>Min Price:</label>
               <input style={input} type="text" value={minValue} onChange={(e) => set_minValue(e.target.value)} />
               <label>Max Price :</label>
               <input style={input} type="text" value={maxValue} onChange={(e) => set_maxValue(e.target.value)} />
             </div>
+            <div className="Slider">
+              <MultiRangeSlider
 
+                min={0}
+                max={1000}
+                step={5}
+                ruler={false}
+                label={true}
+                preventWheel={false}
+                minValue={minValue}
+                maxValue={maxValue}
+                onInput={(e) => {
+                  handleInput(e);
+                }} />
+            </div>
 
-            <MultiRangeSlider
-              min={0}
-              max={1000}
-              step={5}
-              ruler={false}
-              label={true}
-              // onChange={(e)=>set_minValue(e.target.minValue)}
-              preventWheel={false}
-              minValue={minValue}
-              maxValue={maxValue}
-              onInput={(e) => {
-                handleInput(e);
-
-              }}
-
-            />
           </div>
         </div>
         <div className="row">
           <ProductComponent search={search} />
         </div>
-
-
       </div>
     </>
   )

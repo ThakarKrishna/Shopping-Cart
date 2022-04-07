@@ -25,7 +25,7 @@ export const setProducts = (products, category, title, minValue, maxValue) => {
                 :
 
                 title = "" ?
-                    (minValue -= 0 && maxValue == 1000) ? products.filter(item => item.category == category) :
+                    (minValue == 0 && maxValue == 1000) ? products.filter(item => item.category == category) :
                         products.filter((item) => {
                             return (item.price >= minValue && item.price <= maxValue) && products.filter(item => item.category == category)
                         })
